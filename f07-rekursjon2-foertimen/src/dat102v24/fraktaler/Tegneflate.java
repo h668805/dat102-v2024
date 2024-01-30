@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-class Tegneflate extends JPanel {
+public class Tegneflate extends JPanel {
 	
 	private record Linje (int x1, int y1, int x2, int y2) {}
 	

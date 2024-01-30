@@ -12,7 +12,7 @@ public abstract class Fraktal {
 		this.canvas = canvas;
 	}
 
-	protected abstract void tegn();
+	public abstract void tegn();
 
 	protected void ventMillis(int millis) {
 		try {
