@@ -1,5 +1,7 @@
 package dat102.f08.sortering;
 
+import java.util.Random;
+
 public class SorterTabell {
 	/**
 	 * Sorter dei første n elmenta i tabellen i ikkje stigande ordning (det betyr
@@ -62,6 +64,58 @@ public class SorterTabell {
 			}
 
 			a[j + 1] = temp;
+		}
+	}
+
+	public static <T extends Comparable<? super T>> void kvikkSortering(T[] a, int forste, int siste) {
+		@SuppressWarnings("unchecked")
+		T[] temp = (T[]) new Comparable<?>[a.length];
+		kvikkSortering(a, temp, forste, siste);
+	}
+
+	public static <T extends Comparable<? super T>> void kvikkSortering(T[] a, T[] temp, int forste, int siste) {
+		if (forste < siste) {
+			kvikk(a, temp, forste, siste);
+
+			kvikkSortering(a, forste, 1);
+			kvikkSortering(a, 1, siste);
+		}
+	}
+
+	public static <T extends Comparable<? super T>> void kvikk(T[] a, T[] temp, int forste, int siste) {
+	}
+
+	public static <T extends Comparable<? super T>> void fletteSortering(T[] a, int forste, int siste) {
+		@SuppressWarnings("unchecked")
+		T[] temp = (T[]) new Comparable<?>[a.length];
+		int midten = (forste + siste) / 2;
+		fletteSortering(a, temp, forste, midten, siste);
+	}
+
+	public static <T extends Comparable<? super T>> void fletteSortering(T[] a, T[] temp, int forste, int midten,
+			int siste) {
+		if (forste < siste) {
+			fletteSortering(a, forste, midten);
+			fletteSortering(a, midten + 1, siste);
+
+			flette(a, temp, forste, midten, siste);
+		}
+	}
+
+	private static <T extends Comparable<? super T>> void flette(T[] a, T[] temp, int forste, int midten, int siste) {
+		int j = forste;
+		int k = midten + 1;
+
+		for (int i = forste; i <= siste; i++) {
+			if (j >= midten) {
+				temp[i] = a[k++];
+			} else if (k >= siste) {
+				temp[i] = a[j++];
+			} else if (a[j].compareTo(a[k]) < 0) {
+				temp[i] = a[j++];
+			} else {
+				temp[i] = a[k++];
+			}
 		}
 	}
 }
