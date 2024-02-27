@@ -3,6 +3,7 @@ package dat102.uke89.oppg1_mengder;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class JavaSetToMengde<T> implements MengdeADT<T> {
 	private Set<T> set;
@@ -95,8 +96,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public void leggTilAlleFra(MengdeADT<T> annenMengde) {
-		T[] tab = annenMengde.tilTabell();
-		for (T e : tab) {
+		for (T e : annenMengde.tilTabell()) {
 			leggTil(e);
 		}
 	}
@@ -110,20 +110,14 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] tilTabell() {
-		Iterator<T> it = set.iterator();
-		@SuppressWarnings("unchecked")
-		T[] tab = (T[]) new Object[set.size()];
-		for (int i = 0; i < set.size() && it.hasNext(); i++) {
-			tab[i] = it.next();
-		}
-		return tab;
+		return (T[]) set.toArray(new Comparable<?>[set.size()]);
 	}
 
 	@Override
 	public int antallElementer() {
 		return set.size();
 	}
-
 }

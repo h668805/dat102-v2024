@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,7 +65,6 @@ public class JavaSetToMengdeTest {
 		assertFalse(menge.erLik(mengde));
 		
 		menge.leggTilAlleFra(mengde);
-		System.out.println(menge.antallElementer());
 		assertTrue(menge.erDelmengdeAv(mengde));
 		assertTrue(menge.erLik(mengde));
 	}
@@ -151,12 +152,12 @@ public class JavaSetToMengdeTest {
 		assertArrayEquals(test, mengde.tilTabell());
 		
 		leggTilElementer();
+		System.out.println(Arrays.toString(mengde.tilTabell()));
 		String[] test1 = {s, str, st};
 		assertArrayEquals(test1, mengde.tilTabell());
 		
 		mengde.fjern(st);
 		String[] test2 = {s, str};
 		assertArrayEquals(test2, mengde.tilTabell());
-
 	}
 }
