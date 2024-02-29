@@ -15,6 +15,6 @@ public class HobbyMatchMain {
 	}
 
 	static double match(Person a, Person b) {
-		return a.snitt(b) - (a.minus(b) + b.minus(a)) / (double)(a.antallHobbyer() + b.antallHobbyer());
+		return a.snitt(b) - (a.minus(b) + b.minus(a)) / (a.antallHobbyer() + b.antallHobbyer());
 	}
 }
