@@ -1,5 +1,7 @@
 package dat102.uke89.oppg1_person;
 
+import java.util.Objects;
+
 import dat102.uke89.oppg1_mengder.JavaSetToMengde;
 import dat102.uke89.oppg1_mengder.MengdeADT;
 
@@ -42,4 +44,22 @@ public class Person {
 	public int antallHobbyer() {
 		return hobbyer.antallElementer();
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(hobbyer, navn);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		return Objects.equals(hobbyer, other.hobbyer) && Objects.equals(navn, other.navn);
+	}
 }
+

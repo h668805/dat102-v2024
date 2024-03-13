@@ -1,11 +1,11 @@
 package dat102.uke89.oppg1_mengder;
 
 public class LenketMengde<T> implements MengdeADT<T> {
-	private LinearNode<T> tabell;
+	private LinearNode<T> start;
 	private int antall;
 
 	public LenketMengde() {
-		tabell = new LinearNode<>();
+		start = new LinearNode<>();
 		antall = 0;
 	}
 
@@ -16,7 +16,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean inneholder(T element) {
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 		while (temp.data != null) {
 			if (element.equals(temp.data)) {
 				return true;
@@ -28,7 +28,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean erDelmengdeAv(MengdeADT<T> annenMengde) {
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 		while (temp.data != null) {
 			if (!annenMengde.inneholder(temp.data)) {
 				return false;
@@ -45,7 +45,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean erDisjunkt(MengdeADT<T> annenMengde) {
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 		while (temp.data != null) {
 			if (annenMengde.inneholder(temp.data)) {
 				return false;
@@ -58,7 +58,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> annenMengde) {
 		MengdeADT<T> snitt = new LenketMengde<>();
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 
 		while (temp.data != null) {
 			if (annenMengde.inneholder(temp.data)) {
@@ -94,8 +94,8 @@ public class LenketMengde<T> implements MengdeADT<T> {
 		if (!inneholder(element)) {
 			LinearNode<T> temp = new LinearNode<>();
 			temp.data = element;
-			temp.neste = tabell;
-			tabell = temp;
+			temp.neste = start;
+			start = temp;
 			antall++;
 		}
 	}
@@ -115,13 +115,13 @@ public class LenketMengde<T> implements MengdeADT<T> {
 			return null;
 		}
 
-		if (element.equals(tabell.data)) {
-			tabell = tabell.neste;
+		if (element.equals(start.data)) {
+			start = start.neste;
 			antall--;
 			return element;
 		}
 
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 		while (temp.neste.data != null) {
 			if (element.equals(temp.neste.data)) {
 				temp.neste = temp.neste.neste;
@@ -138,7 +138,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 	public T[] tilTabell() {
 		@SuppressWarnings("unchecked")
 		T[] tab = (T[]) new Object[antall];
-		LinearNode<T> temp = tabell;
+		LinearNode<T> temp = start;
 		for (int i = antall - 1; temp.data != null && 0 <= i; i--) {
 			tab[i] = temp.data;
 			temp = temp.neste;
