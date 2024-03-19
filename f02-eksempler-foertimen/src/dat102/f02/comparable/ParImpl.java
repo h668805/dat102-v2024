@@ -12,12 +12,12 @@ public class ParImpl<T> implements Par<T> {
 	
 	@Override
 	public T minste() {
-		return null;
+		return forste.hashCode()-andre.hashCode() < 0 ? forste : andre;
 	}
 	
 	@Override
 	public T storste() {
-		return null;
+		return forste.hashCode()-andre.hashCode() > 0 ? forste : andre;
 	}
 	
 	@Override

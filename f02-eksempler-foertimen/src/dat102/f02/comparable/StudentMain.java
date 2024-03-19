@@ -14,14 +14,14 @@ public class StudentMain {
 //		System.out.println("123 compareTo 456 = " + student123.compareTo(student456));
 		
 		//Skrive ut studentene i stigende rekkefølge
-//		int sammenlign123og456 = student123.compareTo(student456);
-//		if (sammenlign123og456 < 0) { //dvs. 123 er minst
-//			System.out.println(student123);
-//			System.out.println(student456);
-//		} else {
-//			System.out.println(student456);
-//			System.out.println(student123);
-//		}
+		int sammenlign123og456 = student123.compareTo(student456);
+		if (sammenlign123og456 < 0) { //dvs. 123 er minst
+			System.out.println(student123);
+			System.out.println(student456);
+		} else {
+			System.out.println(student456);
+			System.out.println(student123);
+		}
 	}
 
 }

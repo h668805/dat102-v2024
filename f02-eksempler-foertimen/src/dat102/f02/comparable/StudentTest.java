@@ -12,9 +12,9 @@ class StudentTest {
 		Student stud345 = new Student(345, "Anne");
 		Student stud123 = new Student(123, "Knut");
 		
-//		assertTrue(stud345.compareTo(stud123) > 0);
-//		assertTrue(stud123.compareTo(stud345) < 0);
-//		assertTrue(stud123.compareTo(stud123) == 0);
+		assertTrue(stud345.compareTo(stud123) > 0);
+		assertTrue(stud123.compareTo(stud345) < 0);
+		assertTrue(stud123.compareTo(stud123) == 0);
 		
 		assertFalse(stud345.equals(stud123));
 		assertTrue(stud345.equals(stud345));
